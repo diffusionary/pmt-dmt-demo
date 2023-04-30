@@ -15,12 +15,21 @@ def parse_file(url):
             return "Error: file is not in valid JSON format"
     else:
         return "Error: could not download file from provided URL"
-        
+
 def on_ui_tabs():
     with gr.Blocks(analytics_enabled=False) as ui_component:
-        url = gr.inputs.Textbox(label="Enter the URL of the .pmt file")
-        json_data = parse_file(url)
-        gr.json(json_data)
-    return [(ui_component, "Prompt Fetcher", "promtp_fetcher")]
+        with gr.Row():
+            angle = gr.Slider(
+                minimum=0.0,
+                maximum=360.0,
+                step=1,
+                value=0,
+                label="Angle"
+            )
+            checkbox = gr.Checkbox(
+                False,
+                label="Checkbox"
+            )
+        return [(ui_component, "Prompt Fetcher", "extension_template_tab")]
 
 script_callbacks.on_ui_tabs(on_ui_tabs)
