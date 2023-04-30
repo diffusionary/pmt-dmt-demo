@@ -20,7 +20,7 @@ def on_ui_tabs():
     url_input = gr.inputs.Textbox(label="Enter the URL of the .pmt file")
     with gr.Blocks(analytics_enabled=False) as ui_component:
         url = url_input()
-        json_data = fetch_json_data(url)
+        json_data = parse_file(url)
         gr.json(json_data)
     return [(ui_component, "Prompt Fetcher", "promtp_fetcher")]
 
