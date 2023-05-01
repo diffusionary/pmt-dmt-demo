@@ -22,11 +22,11 @@ def load_prompt():
             pmt_loc = gr.inputs.Textbox(label="Load Prompt from URL:")
             pmt_rec = gr.inputs.Textbox(label="Results:")
             button = gr.Button("Load", variant='primary')
-            button.click(parse_file, inputs=[pmt_loc], outputs=[ptm_rec])
+            button.click(parse_file, inputs=[pmt_loc], outputs=[pmt_rec])
 
 def on_ui_tabs():
     with gr.Blocks(analytics_enabled=False) as ui_component:
         load_prompt()
-        return [(ui_component, "Prompt Loader", "extension_template_tab")]
+        return [(ui_component, "Prompt Loader", "prompt_loader")]
 
 script_callbacks.on_ui_tabs(on_ui_tabs)
